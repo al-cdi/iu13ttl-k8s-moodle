@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: moodle-ingress
+  namespace: moodle
+spec:
+  rules:
+    - host: moodle.lab.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: moodle
+                port:
+                  number: 80
